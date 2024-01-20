@@ -1,7 +1,7 @@
 const simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs');
-const localRepositoryPath = 'C:/Test Apis/git bot/Github-Bot'; // Local path to the existing repository
+const localRepositoryPath = '../Github-Bot'; // Local path to the existing repository
 
 // Function to create a random commit message
 const getRandomCommitMessage = () => {
@@ -29,7 +29,7 @@ const commitAndPush = async () => {
         const commitInfo = await git.commit(commitMessage);
 
         const pushInfo = await git.push('origin', 'main'); 
-        
+
         console.log('Changes committed and pushed successfully.');
     } catch (error) {
         console.error('Error during commit and push:', error.message || error);
