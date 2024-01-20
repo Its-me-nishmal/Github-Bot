@@ -21,24 +21,15 @@ const commitAndPush = async () => {
     try {
         const commitMessage = getRandomCommitMessage();
 
-        // Log the current status
         const status = await git.status();
-        console.log('Current status:', status);
-
-        // Create a new file with the commit message
         fs.writeFileSync('commit.txt', commitMessage);
 
-        // Add changes
         await git.add('.');
 
-        // Commit changes
         const commitInfo = await git.commit(commitMessage);
-        console.log('Commit info:', commitInfo);
 
-        // Push changes
-        const pushInfo = await git.push('origin', 'main'); // Replace 'main' with your branch name
-        console.log('Push info:', pushInfo);
-
+        const pushInfo = await git.push('origin', 'main'); 
+        
         console.log('Changes committed and pushed successfully.');
     } catch (error) {
         console.error('Error during commit and push:', error.message || error);
