@@ -1,7 +1,7 @@
 const simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs');
-const localRepositoryPath = 'C:/Test Apis/git bot/Github-Bot';// Local path to the existing repository
+const localRepositoryPath = 'C:/Test Apis/git bot/Github-Bot'; // Local path to the existing repository
 
 // Function to create a random commit message
 const getRandomCommitMessage = () => {
@@ -45,7 +45,6 @@ const commitAndPush = async () => {
     }
 };
 
-
 // Check if the Git repository exists
 if (!fs.existsSync(localRepositoryPath)) {
     console.error('Error: Git repository not found. Please set up the repository first.');
@@ -55,11 +54,11 @@ if (!fs.existsSync(localRepositoryPath)) {
 // Change to the repository directory and run commitAndPush function
 process.chdir(localRepositoryPath);
 
-// Example: Run the script manually once
-(async () => {
+// Run the script every 10 seconds
+setInterval(async () => {
     try {
         await commitAndPush();
     } catch (error) {
         console.error('Error:', error.message || error);
     }
-})();
+}, 10 * 1000); // 10 seconds in milliseconds
